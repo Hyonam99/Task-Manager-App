@@ -1,6 +1,10 @@
 {
   "Post": {
-    "todo": { "string": ["Buy More Laptops", "Buy More Books", "Buy More Sweets"] }
+    "todo": { 
+      "string": ["Buy More Laptops", 
+      "Buy More Books", "Buy More Sweets", 
+      "Test More APIs", "Share this API with others"] },
+    "Completed": {"boolean": {}}
   },
   "Comment": {
     "Completed": {"boolean": {}}
