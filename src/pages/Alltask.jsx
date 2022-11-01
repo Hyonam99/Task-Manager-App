@@ -11,11 +11,11 @@ const Alltask = ({allUsers}) => {
   return (
   <section className="Todo-body">
     <ul>
-      {allUsers.map((eUser) => 
-      <li>{eUser.id} - {eUser.title}<span className='Todo-icons'><FaCheckCircle /> <FaTrashAlt /> <FaEdit /></span></li>
+      {allUsers.slice(0, 10).map((eUser) => 
+      <li key={eUser.id}>{eUser.id} - {eUser.todo}<span className='Todo-icons'><FaCheckCircle /> <FaTrashAlt /> <FaEdit /></span></li>
       
       )}
-      
+
     </ul>
     
   </section>

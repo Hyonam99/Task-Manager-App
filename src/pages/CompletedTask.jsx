@@ -3,12 +3,20 @@ import { FaCheckCircle } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 
-const CompletedTask = () => {
+const CompletedTask = ({allUsers}) => {
+
+  const displayUsers = allUsers.filter(ussser => ussser.Completed === true)
+
   return (
     <section className="Todo-body">
     <ul>
-      <li>COMPLETED TASK <span className='Todo-icons'><FaCheckCircle /> <FaTrashAlt /> <FaEdit /></span></li>
+      {displayUsers.slice(0, 10).map((eUser) => 
+      <li key={eUser.id}>{eUser.id} - {eUser.todo} - {eUser.Completed}<span className='Todo-icons'><FaCheckCircle /> <FaTrashAlt /> <FaEdit /></span></li>
+      
+      )}
+
     </ul>
+    
   </section>
   )
 }
