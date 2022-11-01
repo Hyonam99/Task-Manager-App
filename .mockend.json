@@ -1,8 +1,11 @@
 {
-  "Todo": {"string": ["Buy More Laptops", "Buy More Books", "Buy More Sweets"]},
-  "Completed": {"boolean": {}} 
+  "Post": {
+    "todo": { "string": ["Buy More Laptops", "Buy More Books", "Buy More Sweets"] }
+  },
+  "Comment": {
+    "Completed": {"boolean": {}}
+  }
 }
-
 
 
 
