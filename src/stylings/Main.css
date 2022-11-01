@@ -1,0 +1,54 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+.Todo-header{
+  text-align: center;
+  background-color: rgba(138, 8, 138,0.9);
+  color:white;
+  padding:16px;
+}
+
+.Todo-header h4{
+  font-size: 1.8rem;
+  margin-bottom: 2%;
+}
+
+.Todo-header input{
+  border:none;
+  outline:none;
+  padding:4px 16px;
+  font-size: 1rem;
+  margin-bottom: 2%;
+}
+
+.Todo-action-buttons-holder{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap:16px;
+}
+
+.Todo-action-buttons-holder button{
+  padding:4px 8px;
+  cursor: pointer;
+}
+
+ul li{
+  padding: 8px 16px;
+  border-bottom: 2px solid hsl(0, 0%, 80%);
+  display:flex;
+  justify-content: space-between;
+}
+
+li:hover{
+  background-color: hsl(311, 69%, 89%);
+}
+
+.Todo-icons{
+  display: flex;
+  gap:16px;
+  cursor: pointer;
+}
