@@ -1,9 +1,6 @@
 {
-  "data": {
-    "Todo": {"string": ["Buy More Laptops", "Buy More Books", "Buy More Sweets"]},
-    "Completed": {"boolean": {}}
-  }
-    
+  "Todo": {"string": ["Buy More Laptops", "Buy More Books", "Buy More Sweets"]},
+  "Completed": {"boolean": {}} 
 }
 
 
