@@ -13,14 +13,16 @@ const TaskBody = () => {
   const [allItems, setAllItems] = useState(true)  
   const [pendingitems, setPendingitems] = useState(false)  
   const [completeditems, setCompleteditems] = useState(false)  
-
-  const  base = "https://mockend.com/Hyonam99/Task-Manager-App/posts";
+  let Todo_GetData_LocalStorage = JSON.parse(localStorage.getItem('AllTodo'));
+  let Todo_StoreData_LocalStorage ; 
+  let Todo_UpdateData;
+  const  base = "https://jsonplaceholder.typicode.com/todos";
 
    useEffect (()  => { 
      axios.get(base)
     .then((data) => {
-      console.log(data.data)
-      setAllUser(data.data)
+      Todo_StoreData_LocalStorage = localStorage.setItem('AllTodo', JSON.stringify(data.data));
+      setAllUser(Todo_GetData_LocalStorage)
     })
 
     .catch((error => {
@@ -39,7 +41,7 @@ const TaskBody = () => {
         completeItem={setCompleteditems}
      />
 
-  {allItems && <Alltask allUsers={alluser}/>}
+  {allItems && <Alltask allUsers={alluser} setuse={setAllUser}/>}
   {pendingitems && <PendingTask allUsers={alluser}/>}
   {completeditems && <CompletedTask allUsers={alluser}/>}
 

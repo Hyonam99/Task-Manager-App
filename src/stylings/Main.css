@@ -43,12 +43,25 @@
   font-size: large;
 }
 
+.Todo-body{
+  margin-top:100px;
+}
+
 ul li{
   padding: 8px 16px;
   border-bottom: 2px solid hsl(0, 0%, 80%);
   display:flex;
   justify-content: space-between;
+ 
 }
+
+ul li.cancel{
+  text-decoration: line-through;
+}
+ul li.list{
+  color: red ;
+}
+
 
 ul li:first-child{
   border-top: 2px solid hsl(0, 0%, 80%);
@@ -69,18 +82,25 @@ li:hover{
   color:rgba(138, 8, 138,0.9);
 }
 
+.Todo-icons svg.doneall {
+  color:rgba(15, 201, 55, 0.9);
+}
+
+
+
 .task-navigation-panel{
   padding: 1.6rem 0;
-  position: sticky;
-  top:30%;
+  position: fixed;
+  top:auto;
   background-color: white;
+  width:100%;
 }
 
 .task-navigation-panel a{
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   outline: 1px solid rgba(138, 8, 138,0.9);
-  padding: 4px 16px;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
 }
 .task-navigation-panel a:hover{
@@ -113,14 +133,3 @@ li:hover{
 }
 
 
-@media(max-width:958px) {
-  .task-navigation-panel{
-       top:27%;
-  }
-}
-
-@media(max-width:768px) {
-  .task-navigation-panel{
-       top:24%;
-  }
-}
