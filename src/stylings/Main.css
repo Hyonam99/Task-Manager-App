@@ -58,9 +58,7 @@ ul li{
 ul li.cancel{
   text-decoration: line-through;
 }
-ul li.list{
-  color: red ;
-}
+
 
 
 ul li:first-child{

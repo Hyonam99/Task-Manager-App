@@ -3,32 +3,66 @@ import { FaCheckCircle } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import {useState} from 'react'
+import Swal from "sweetalert2";
 
 const Alltask = ({allUsers, setuse}) => {
+
+  const displayUsers = allUsers.slice(0, 20);
 
   const [isEditing, setIsEditing] = useState(false);
   // object state to set so we know which todo item we are editing
   const [currentTodo, setCurrentTodo] = useState(false);
 
-  function editTodo(event){
-    setCurrentTodo({ event});
-    console.log(currentTodo);
+  function editTodo(task){
+    console.log(task)
+
+    let inputVal = title
+    let ntitle = inputVal
+
+    const newTitle = displayUsers.map(obj =>
+      obj.id === task.id ? { ...obj, title: ntitle } : obj
+  );
+    
+    const {id, completed, title} = task
+       
+    
+     const { value: input } = Swal.fire({
+      title: 'Edit this todo app',
+      input: 'text',
+      inputLabel: 'Your task details is shown below',
+      inputValue: inputVal,
+      showCancelButton: true,
+
+      // inputValidator: (value) => {
+      //   if (value) {
+      //     Swal.fire(`Your IP address is ${inputValue}`)
+      //   }
+      // }
+    })
+    .then((result) => {
+
+    
+      if (result.isConfirmed) {
+        
+      
+      setuse(newTitle);
+      localStorage.setItem('All_Tasks', JSON.stringify(newTitle))
+        // Swal.fire("Well done!", `Your task has been edited to ${inputVal}`, "success")
+        
+      }
+    })
+    
+    
   }
 
-  function compTodoState(id){
-    console.log(id)
-    displayUsers.map((user) => {
-      if(user.id === id && user.completed === false){
-        user.completed = true;
-      }
-
-      else if(user.id === id && user.completed === true){
-        user.completed = false;
-      }
-      setuse([...allUsers, user])
-    })
-    // id.completed = true;
+  function compTodoState(task){
     
+    const newTodo = displayUsers.map(obj =>
+      obj.id === task.id && obj.completed === false ? { ...obj, completed: true } : obj.id === task.id && obj.completed === true ? { ...obj, completed: false } : obj
+      
+  );
+  setuse(newTodo);
+  localStorage.setItem('All_Tasks', JSON.stringify(newTodo))
   }
 
   function deleteTodo(id){
@@ -39,17 +73,18 @@ const Alltask = ({allUsers, setuse}) => {
   });
   // removeItem returns a new array - so now we are setting the todos to the new array
   setuse(removeItem);
-
+  
+  localStorage.setItem('All_Tasks', JSON.stringify(removeItem))
 }
 
 
-const displayUsers = allUsers.slice(0, 20);
+
 
   return (
   <section className="Todo-body">
     <ul>
       {displayUsers.map((eUser) =>       
-      <li key={eUser.id} className={eUser.completed === true ? 'cancel' : ''}>{eUser.id} - {eUser.title}<span className='Todo-icons'><FaCheckCircle className={eUser.completed === true ? 'doneall' : ''} onClick={()=>{compTodoState(eUser.id)}}/> <FaTrashAlt onClick={()=>{deleteTodo(eUser.id)}}/> <FaEdit onClick={()=>{editTodo(eUser)}}/></span></li>
+      <li key={eUser.id} className={eUser.completed === true ? 'cancel' : ''}>{eUser.id} - {eUser.title}<span className='Todo-icons'><FaCheckCircle className={eUser.completed === true ? 'doneall' : ''} onClick={()=>{compTodoState(eUser)}}/> <FaTrashAlt onClick={()=>{deleteTodo(eUser.id)}}/> <FaEdit onClick={()=>{editTodo(eUser)}}/></span></li>
       
       )}
 
@@ -60,3 +95,6 @@ const displayUsers = allUsers.slice(0, 20);
 }
 
 export default Alltask
+
+
+
